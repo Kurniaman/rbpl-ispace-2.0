@@ -63,8 +63,8 @@
                     <img @click="open = true" class="transform transition duration-300 hover:scale-105 cursor-pointer"
                         src="images/btn-add.svg" alt="">
                     <div x-show="open"
-                        class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
-                        <div class="bg-white p-6 rounded-[20px] shadow-xl w-[676px] h-[579px]">
+                        class=" fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
+                        <div class="bg-white rounded-[20px]  shadow-xl w-[676px] h-[579px]">
                             <!-- Form untuk posting ke database -->
                             <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -75,9 +75,10 @@
                                     <p>{{ $post->material_description }}</p>
                                     <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
                                 @endforeach --}}
-                                <div class="mb-4">
+                                <div class=" pr-[44.8px]">
                                     <div class="flex flex-row">
-                                        <div class="text-[#283D70] font-bold mb-[28px]">
+                                        <img src="{{ asset('images/material.png') }}" class="ml-[34px] w-[21.33px] h-[26.67px] my-auto" alt="">
+                                        <div class="ml-[22.6px] text-[#283D70] font-bold my-[27px]">
                                             Share your material here!
                                         </div>
                                         <div class="flex justify-end ml-auto">
@@ -87,40 +88,68 @@
                                         </div>
                                         <img src="" alt="">
                                     </div>
+                                </div>
 
+                                <div class="pl-[83px] pr-[93px]">
 
-                                    <label for="file_name" class="block text-gray-800 font-bold mb-2">File Name:</label>
-                                    <input type="text" name="file_name" id="file_name"
-                                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                        required>
+                                    <div>
+                                        <label for="file_name"
+                                            class="block text-[#283D70] font-bold text-[16px] mb-[8px]">File
+                                            Name:</label>
+                                        <input type="text" name="file_name" id="file_name"
+                                            class="w-full px-3 py-2 bg-[#F8F1E9] h-[39px] rounded-[20px] border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            required>
+                                    </div>
+
+                                    <div class="mb-[16px]">
+                                        <label for="material_type"
+                                            class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Material
+                                            Type</label>
+                                        <select name="material_type" id="material_type"
+                                            class="w-full bg-[#F8F1E9] h-[39px] rounded-[20px] px-3 py-2 border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            required>
+                                            <option value="type1">Notes</option>
+                                            <option value="type2">Video</option>
+                                            <option value="type3">Quiz</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-[16px]">
+                                        <label for="material_description"
+                                            class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Material
+                                            Description</label>
+                                        <textarea name="material_description" id="material_description" rows="3"
+                                            class="w-full bg-[#F8F1E9] h-[69px] rounded-[20px] px-3 py-2 border  focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                            required></textarea>
+                                    </div>
+                                    <div class="mb-[8px]">
+                                        <label for="upload_file"
+                                            class="block text-[#283D70] font-bold text-[16px] mb-[8px]">Upload
+                                            File</label>
+                                        {{-- <input type="file" name="upload_file" id="upload_file"
+                                        class="focus:outline-none h-[69px] bg-[#F8F1E9] rounded-[20px] focus:ring-blue-500 focus:border-blue-500"
+                                        required> --}}
+                                    </div>
+                                    <!---->
+
+                                    <div class="flex items-center justify-center w-full">
+                                        <label for="upload_file"
+                                            class="flex flex-col items-center justify-center w-full h-[69px] border-2 rounded-[20px] bg-[#F8F1E9]">
+                                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                                <img src="images/file-upload.png" alt="">
+                                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400 text-[12px]"><span
+                                                        class="font-semibold">Input your file</p>
+                                            </div>
+                                            <input name="upload_file" id="upload_file" type="file" class="hidden" />
+                                        </label>
+                                    </div>
+
+                                    <!---->
+                                    <div class="flex justify-end flex-col items-center mt-[40px]">
+                                        <button type="submit"
+                                            class="px-4 py-2 w-[91.02px] bg-[#01AC49] opacity-50 rounded-[20px] text-white font-bold ">Send</button>
+                                    </div>
                                 </div>
-                                <div class="mb-4">
-                                    <label for="material_type" class="block text-gray-800 font-bold mb-2">Material
-                                        Type:</label>
-                                    <select name="material_type" id="material_type"
-                                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                                        required>
-                                        <option value="type1">Notes</option>
-                                        <option value="type2">Video</option>
-                                        <option value="type3">Quiz</option>
-                                    </select>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="material_description"
-                                        class="block text-gray-800 font-bold mb-2">Material Description:</label>
-                                    <textarea name="material_description" id="material_description" rows="3"
-                                        class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-blue-500 focus:border-blue-500" required></textarea>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="upload_file" class="block text-gray-800 font-bold mb-2">Upload
-                                        File:</label>
-                                    <input type="file" name="upload_file" id="upload_file"
-                                        class="focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
-                                </div>
-                                <div class="flex justify-end">
-                                    <button type="submit"
-                                        class="px-4 py-2 bg-blue-500 text-white font-bold rounded">Send</button>
-                                </div>
+
                             </form>
                         </div>
                     </div>
@@ -237,25 +266,23 @@
                                                         class="fa fa-trash"></i> Delete</a>
                                                 <div x-show="open"
                                                     class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
-                                                    <div class="bg-white p-6 rounded shadow-xl">
-                                                        <button type="button" class="close" data-dismiss="modal"
+                                                    <div class="bg-white w-[433px] h-[379px] rounded-[20px] p-6  shadow-xl">
+                                                        {{-- <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <h5><b>Delete File?</b></h5>
-                                                        <br>
-                                                        <br>
-                                                        <div class="group-delete-confirmation" style="">
-                                                            <a class="btn rounded-5 d-flex align-items-center justify-content-center"
-                                                                style="width: 250px;height: 50px;background-color:#F8F1E9; color: #000000;margin-top: 49px">Are
-                                                                you sure you want to delete?</a>
+                                                        </button> --}}
+                                                        <h1 class="font-bold text-[20px] text-[#283D70]">Delete File?</h1>
+                                                        <div class="group-delete-confirmation bg-[#F8F1E9] rounded-[20px] h-[45.17px] mt-[35px]" >
+                                                            <div class="text-center transform translate-y-1/2 text-[#000000]"
+                                                                >Are
+                                                                you sure you want to delete?</div>
                                                         </div>
                                                         <br>
                                                         <br>
                                                         <div class="group-delete-confirmation" style="">
                                                             <a href="/materi/delete/{{ $post->id }}"
-                                                                class="btn rounded-5 d-flex align-items-center justify-content-center"
-                                                                style="width: 250px;height: 50px;background-color:#68CE93; color: #FFFF;margin-top: 49px">Delete</a>
+                                                                class="rounded-[20px] w-[78.96px] h-[26.47px] text-white bg-[#68CE93] flex align-items-center justify-content-center"
+                                                                >Delete</a>
                                                         </div>
 
                                                     </div>
@@ -271,6 +298,12 @@
                 @endforeach
             </table>
         </div>
+
+        <!-- coba-->
+
+
+
+        <!-- coba-->
 
         <div class="mt-12">
             <h1 class="text-[#283D70] ml-20 text-2xl font-semibold">Reccomendation</h1>

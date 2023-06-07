@@ -1,7 +1,13 @@
+<!-- fonts poppin -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<!-- fonts poppin -->
+
 @include('components.headertailwind')
 
 
-<div class="pl-[144px] w-full h-max bg-[#F2F2F2] py-[32px]">
+<div class="pl-[144px] w-full h-max bg-[#F2F2F2] py-[32px] font-poppins">
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
