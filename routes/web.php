@@ -45,6 +45,7 @@ Route::post('/materi', [PostController::class, 'store'])->name('post.store');
 
 Route::put('/post', [PostController::class, 'store'])->name('post.store');
 Route::get('/materi/post', [PostController::class, 'index'])->name('post.index');
+Route::get('download/{id}',[PostController::class, 'download']);
 
 Route::get('/page/{id}', [PostController::class, 'show'])->name('post.show');
 

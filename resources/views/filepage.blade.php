@@ -37,9 +37,9 @@
                     <p class="text-center font-medium " style="font-size: 10px">Semester 1</p>
                 </div>
 
-                <img class="materi" src="{{ asset('storage/app/'.$post->upload_file) }}" alt="materi 1" style="width: 579px;height: 421px;">
+                <img class="materi" src="{{ asset('storage/uploads/'.$post->upload_file) }}" alt="materi 1" style="width: 579px;height: 421px;">
                 <div class="group-download" style="">
-                    <a class="btn rounded-5 d-flex align-items-center justify-content-center"
+                    <a href="{{url('/download/'.$post->id)}}" class="btn rounded-5 d-flex align-items-center justify-content-center"
                         style="width: 250px;height: 50px;background-color:#68CE93; color: #ffff;margin-top: 49px">Download
                         Now</a>
                 </div>

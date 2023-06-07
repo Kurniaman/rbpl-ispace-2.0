@@ -192,11 +192,10 @@
                     </tr>
                 </thead>
 
-                <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
-                @foreach ($posts as $post)
-                    <tbody>
-                        <tr class="bg-white">
-
+            <!-- Tambahkan kode HTML lainnya untuk menampilkan data posting -->
+                @foreach ($ecak as $post)
+                <tbody>
+                    <tr class="bg-white">
                             <th scope="row"
                                 class="pl-[76px] ml-3 w-64 flex flex-row gap-2 justify-start text-left py-4 font-medium whitespace-nowrap ">
                                 <img src="images/file-text-icon.svg" alt="">
@@ -207,19 +206,32 @@
                                 </a>
                             </th>
 
-                            <td class="px-6 py-4 ">
-                                <h1 class="rounded-full mx-auto  bg-[#F9DAAB] w-[65px]">{{ $post->material_type }}</h1>
-                            </td>
-                            <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                                <h1>{{ Auth::user()->name }}</h1>
-                            </td>
-                            <td class="px-6 py-4 text-left text-[#7988a8] font-light">
-                                {{ $post->created_at }}
-                            </td>
-                            <td class="px-6  py-4 text-[#7988a8] relative  font-light">
-                                113 KB
-                                <div x-data="{ open: false }" class="relative">
-                                    <div @click="open = !open" class="  cursor-pointer">
+                                <ul x-show="open" @click.away="open = false"
+                                    class="absolute right-0 mt-2 py-2 w-48 bg-white rounded shadow-xl z-10">
+                                    <li><a href="{{url('/download/'.$post->id)}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-200"><i class="fa fa-download"></i> Download</a>
+                                    </li>
+                                    <div x-data="{ open: false }">
+                                    <li><a @click="open = true" class="transform transition duration-300 cursor-pointer
+                                        block px-4 py-2 text-gray-800 hover:bg-gray-200"><i class="fa fa-trash"></i> Delete</a>
+                                        <div x-show="open"
+                                        class="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
+                                        <div class="bg-white p-6 rounded shadow-xl">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h5><b>Delete File?</b></h5>
+                                            <br>
+                                            <br>
+                                            <div class="group-delete-confirmation" style="">
+                                                <a class="btn rounded-5 d-flex align-items-center justify-content-center"
+                                                    style="width: 250px;height: 50px;background-color:#F8F1E9; color: #000000;margin-top: 49px">Are you sure you want to delete?</a>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="group-delete-confirmation" style="">
+                                                <a href="/materi/delete/{{$post->id}}" class="btn rounded-5 d-flex align-items-center justify-content-center"
+                                                    style="width: 250px;height: 50px;background-color:#68CE93; color: #FFFF;margin-top: 49px">Delete</a>
+                                            </div>
 
                                         <div x-show="!open" href=""><i
                                                 class="fa-solid absolute bottom-[39%] left-[70%] fa-ellipsis-vertical"></i>
