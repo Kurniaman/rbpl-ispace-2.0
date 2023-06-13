@@ -72,7 +72,12 @@
         <nav>
             <div x-data="{ open: false }" class="relative">
                 <div @click="open = !open" class="py-2 px-4 rounded inline-flex items-center cursor-pointer">
-                    <div class="bg-[#FFFFFF] w-[40px] h-[40px] rounded-full"></div>
+                    @if ($user->image && $user->image !== 'user.png')
+                        <img id="img-preview" src="{{ asset('storage/' . $user->image) }}"
+                            class="w-[40px] rounded-full h-[40px]" alt="">
+                    @else
+                        <div class="bg-[#FFFFFF] w-[40px] h-[40px] rounded-full"></div>
+                    @endif
                     <svg x-show="!open" class="w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20 "
                         fill="#FABB5A">
                         <path fill-rule="evenodd"
