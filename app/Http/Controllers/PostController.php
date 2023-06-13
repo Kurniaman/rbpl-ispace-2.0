@@ -8,6 +8,8 @@ use App\Models\Post;
 use Illuminate\View\View;
 //return type redirectResponse
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+
 
 //import Facade "Storage"
 use Illuminate\Support\Facades\Storage;
@@ -74,10 +76,11 @@ class PostController extends Controller
     public function show(string $id): View
     {
         //get post by ID
+        $user = Auth::user();
         $post = Post::findOrFail($id);
 
         //render view with post
-        return view('filepage', compact('post'));
+        return view('filepage', compact('post','user'));
 
     }
 
