@@ -17,8 +17,8 @@
                 <div class="flex justify-center items-center mb-24">
                     <div class="w-[237px] h-[237px] relative">
                         <img id="img-preview" src="{{ asset('storage/' . $user->image) }}"
-                            class="w-[237px] rounded-full h-[237px]" alt="">
-                        <label for="image" class="text-white mb-2 rounded-full absolute bottom-2 right-2 space-x-4">
+                            class="w-[237px] rounded-full h-[237px] bg-[#DCDAD7]" alt="">
+                        <label id="buttonid" for="image" class="text-white mb-2 rounded-full absolute bottom-2 right-2 space-x-4">
                             <img class="rounded-full" src="images/cam.svg" alt="Change your profile picture">
                         </label>
                         <input id="image" class="rounded-full" type="file" name="image"
@@ -88,4 +88,18 @@
             </div>
         </div>
     </div>
+    <script>
+        // document.getElementById('buttonid').addEventListener('click', openDialog);
+
+        function openDialog() {
+            document.getElementById('image').click();
+        }
+
+
+
+        let loadFile = function(e) {
+            let image = document.getElementById('img-preview');
+            image.src = URL.createObjectURL(e.target.files[0]);
+        }
+    </script>
 </form>

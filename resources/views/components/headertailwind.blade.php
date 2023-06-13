@@ -74,7 +74,7 @@
                 <div @click="open = !open" class="py-2 px-4 rounded inline-flex items-center cursor-pointer">
                     @if ($user->image && $user->image !== 'user.png')
                         <img id="img-preview" src="{{ asset('storage/' . $user->image) }}"
-                            class="w-[40px] rounded-full h-[40px]" alt="">
+                            class="w-[40px] rounded-full h-[40px] object-cover" alt="">
                     @else
                         <div class="bg-[#FFFFFF] w-[40px] h-[40px] rounded-full"></div>
                     @endif
